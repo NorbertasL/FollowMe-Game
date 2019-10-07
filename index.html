@@ -4,21 +4,29 @@
     <meta charset="utf-8">
     <title>Follow Me!</title>
     <!-- Loading CSS -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/style.css" rel="stylesheet">
+    <link type="text/css" href="assets/js/lib/jQuery_SVG/jquery.svg.css" rel="stylesheet">
     <!-- Loading JS -->
     <script type="text/javascript" src="assets/js/lib/jQuery_v3.4.1.js"></script>
+    <script type="text/javascript" src="assets/js/lib/jQuery_SVG/jquery.svg.js"></script>
+    <script type="text/javascript" src="assets/js/lib/jQuery_SVG/jquery.svganim.js"></script>
     <script type="text/javascript" src="assets/js/followMe.js"></script>
+
   </head>
   <body>
     <div id="game">
-      <svg id="game_svg" width=400 height=400 viewBox="0 0 200 200">
-        <g transform="translate(100,100)" stroke="#000" stroke-width="2">
+      <svg id="game_svg" width=400 height=400 viewBox="-10 -10 220 220">
+        <!-- 4 colour circle -->
+        <g transform="translate(100,100)" stroke="#000" stroke-width="10">
           <path id="game_btn_red" d="M0 0-70 70A99 99 0 0 1-70-70Z" fill="red"/>
           <path id="game_btn_green" d="M0 0-70-70A99 99 0 0 1 70-70Z" fill="green"/>
           <path id="game_btn_yellow" d="M0 0 70-70A99 99 0 0 1 70 70Z" fill="yellow"/>
           <path id="game_btn_blue" d="M0 0 70 70A99 99 0 0 1-70 70Z" fill="blue"/>
         </g>
+        <!--Midle console-->
         <circle id="game_console" cx=100 cy=100 r="40" stroke="black" stroke-width="1" fill="grey" />
+
+
 </svg>
     </div>
 
