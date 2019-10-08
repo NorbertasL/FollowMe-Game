@@ -67,7 +67,7 @@ function btnReset(btnID, orginialColour){
 function gameLoop(){
   console.log("Game loop called");
   if(sequance.length == 0){
-    for(i=sequance.length; i<=gameLvl; i++){
+    for(i=sequance.length; i<gameLvl; i++){
       sequance.push(getRandomBtn());
     }
     console.log("sequance:"+sequance);
