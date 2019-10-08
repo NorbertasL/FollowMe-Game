@@ -54,16 +54,16 @@ $(document).ready(function(){
   });
 
   //Release function
-  $("#game_btn_red").mouseup(function(){
+  $("#game_btn_red").on("mouseup mouseleave", function(){
     releaseButton(1)
   });
-  $("#game_btn_green").mouseup(function(){
+  $("#game_btn_green").on("mouseup mouseleave", function(){
     releaseButton(2)
   });
-  $("#game_btn_yellow").mouseup(function(){
+  $("#game_btn_yellow").on("mouseup mouseleave", function(){
     releaseButton(3)
   });
-  $("#game_btn_blue").mouseup(function(){
+  $("#game_btn_blue").on("mouseup mouseleave", function(){
     releaseButton(4)
   });
 
