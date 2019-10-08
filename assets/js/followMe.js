@@ -5,11 +5,11 @@ let computerSequance = [];
 
 let timeStamp;
 
-//ID's
-const  RED_ID = "#game_btn_red";
-const  GREEN_ID = "#game_btn_green";
-const  YELLOW_ID = "#game_btn_yellow";
-const  BLUE_ID = "#game_btn_blue";
+//ID's and original colour
+const  RED_ID = ["#game_btn_red", "red"];
+const  GREEN_ID = ["#game_btn_green", "green"];
+const  YELLOW_ID = ["#game_btn_yellow", "yellow"];
+const  BLUE_ID = ["#game_btn_blue", "blue"];
 //Making sure document has loaded
 $(document).ready(function(){
   $("#game_btn_start").mousedown(function(){
@@ -35,12 +35,11 @@ $(document).ready(function(){
 
 
 //Makes button glow
-function btnGlow(btnID){
+function btnGlow(btnID, orginialColour){
   //DEBUG
   console.log("Cicked on "+btnID);
-  let lastColor = $(btnID).attr("fill");
   $(btnID).animate({svgFill:"white"}, 100);
-  $(btnID).animate({svgFill:lastColor}, 50);
+  $(btnID).animate({svgFill:orginialColour}, 50);
 }
 
 //Main game loop
@@ -89,16 +88,16 @@ function playPattern(){
 function pressButton(button){
   switch(button) {
   case 1://Red
-    btnGlow(RED_ID)
+    btnGlow(RED_ID[0], RED_ID[1])
     break;
   case 2://Green
-    btnGlow(GREEN_ID)
+    btnGlow(GREEN_ID[0],GREEN_ID[1])
     break;
   case 3://Yello
-    btnGlow(YELLOW_ID)
+    btnGlow(YELLOW_ID[0], YELLOW_ID[1])
     break;
   case 4://Blue
-    btnGlow(BLUE_ID)
+    btnGlow(BLUE_ID[0], BLUE_ID[1])
     break;
   }
 }
