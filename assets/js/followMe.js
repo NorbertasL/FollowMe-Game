@@ -21,7 +21,6 @@ $(document).ready(function(){
   //Button click CallBack functions
   $("#game_btn_red").on("click", function(){
     pressButton(1)
-    console.log(Date.now())
   });
   $("#game_btn_green").on("click", function(){
     pressButton(2)
@@ -55,6 +54,8 @@ function gameLoop(){
   }
   if(!userTurn){
     playPattern();
+  }else{
+    //User turn
   }
 
   //Calling iteslef again
@@ -70,16 +71,18 @@ function resetGame(){
   sequance = [];
 }
 function playPattern(){
-  if(computerSequance.length == 0){
+  if(computerSequance.length == 0 ){
     computerSequance = sequance.slice();
   }
   let ts = Date.now();
   //if 1 sec has pased since last timestamp
   if(ts-timeStamp > 1000){
     timeStamp = ts;
-    console.log("Sequance:"+sequance);
-    console.log("ComputerSequance:"+computerSequance);
-    pressButton(computerSequance.pop());
+    pressButton(computerSequance.shift());
+    if(computerSequance.length == 0){
+      //The sequance has been played, so its the user turn
+      userTurn = true;
+    }
   }
 }
 
