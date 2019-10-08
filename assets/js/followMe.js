@@ -1,4 +1,7 @@
 let gameRunning = false;
+let gameLvl = 1;
+let userTurn = false;
+let needPatter = false;
 //Making sure document has loaded
 $(document).ready(function(){
   $("#game_btn_start").on("click", function(){
@@ -45,6 +48,9 @@ function gameLoop(){
     //This basicly is a while loop, but more stable
     requestAnimationFrame(gameLoop);
   }
+}
+function getRandomBtn(){
+  return Math.floor((Math.random() * 4) + 1);
 }
 
 //Thank you https://www.sitepoint.com/delay-sleep-pause-wait/
