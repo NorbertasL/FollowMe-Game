@@ -71,12 +71,14 @@ function resetGame(){
 }
 function playPattern(){
   if(computerSequance.length == 0){
-    computerSequance = sequance;
+    computerSequance = sequance.slice();
   }
   let ts = Date.now();
   //if 1 sec has pased since last timestamp
   if(ts-timeStamp > 1000){
     timeStamp = ts;
+    console.log("Sequance:"+sequance);
+    console.log("ComputerSequance:"+computerSequance);
     pressButton(computerSequance.pop());
   }
 }
