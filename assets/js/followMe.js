@@ -1,6 +1,11 @@
-
+let gameRunning = false;
 //Making sure document has loaded
 $(document).ready(function(){
+  $("#game_btn_start").on("click", function(){
+    console.log("Start btn clicked");
+    startGame();
+  });
+
   //Button click CallBack functions
   $("#game_btn_red").on("click", function(){
     btnGlow(this);
@@ -22,7 +27,32 @@ function btnGlow(btn){
   //DEBUG
   console.log("Cicked on "+btn.id)
   let lastColor = $(btn).attr("fill");
-  $(btn).animate({svgFill:"white"}, 200);
+  $(btn).animate({svgFill:"white"}, 100);
   $(btn).animate({svgFill:lastColor}, 100);
+}
 
+//Game start method
+function startGame(){
+  //Fliping the game state
+  gameRunning = !gameRunning;
+  gameLoop();
+
+}
+//Main game loop
+function gameLoop(){
+  console.log("Game is running:"+gameRunning);
+  if(gameRunning){
+    //This basicly is a while loop, but more stable
+    requestAnimationFrame(gameLoop);
+  }
+}
+
+//Thank you https://www.sitepoint.com/delay-sleep-pause-wait/
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
 }
