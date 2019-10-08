@@ -31,14 +31,35 @@ $(document).ready(function(){
   $("#game_btn_blue").mousedown(function(){
     pressButton(4)
   });
+
+  //Release function
+  $("#game_btn_red").mouseup(function(){
+    releaseButton(1)
+  });
+  $("#game_btn_green").mouseup(function(){
+    releaseButton(2)
+  });
+  $("#game_btn_yellow").mouseup(function(){
+    releaseButton(3)
+  });
+  $("#game_btn_blue").mouseup(function(){
+    releaseButton(4)
+  });
+
 });
 
 
 //Makes button glow
-function btnGlow(btnID, orginialColour){
+function btnGlow(btnID){
   //DEBUG
-  console.log("Cicked on "+btnID);
+  console.log("Glow on "+btnID);
   $(btnID).animate({svgFill:"white"}, 100);
+
+}
+
+function btnReset(btnID, orginialColour){
+  //DEBUG
+  console.log("Glow off "+btnID);
   $(btnID).animate({svgFill:orginialColour}, 50);
 }
 
@@ -55,6 +76,7 @@ function gameLoop(){
     playPattern();
   }else{
     //User turn
+
   }
 
   //Calling iteslef again
@@ -74,10 +96,16 @@ function playPattern(){
     computerSequance = sequance.slice();
   }
   let ts = Date.now();
+
   //if 1 sec has pased since last timestamp
   if(ts-timeStamp > 1000){
+    //releaseButton("all");
     timeStamp = ts;
-    pressButton(computerSequance.shift());
+    let btn = computerSequance.shift();
+    pressButton(btn);
+
+    //Releasing btn after delay
+    setTimeout(function(){releaseButton(btn)},700);
     if(computerSequance.length == 0){
       //The sequance has been played, so its the user turn
       userTurn = true;
@@ -88,25 +116,33 @@ function playPattern(){
 function pressButton(button){
   switch(button) {
   case 1://Red
-    btnGlow(RED_ID[0], RED_ID[1])
+    btnGlow(RED_ID[0])
     break;
   case 2://Green
-    btnGlow(GREEN_ID[0],GREEN_ID[1])
+    btnGlow(GREEN_ID[0])
     break;
   case 3://Yello
-    btnGlow(YELLOW_ID[0], YELLOW_ID[1])
+    btnGlow(YELLOW_ID[0])
     break;
   case 4://Blue
-    btnGlow(BLUE_ID[0], BLUE_ID[1])
+    btnGlow(BLUE_ID[0])
     break;
   }
 }
-//Thank you https://www.sitepoint.com/delay-sleep-pause-wait/
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
+
+function releaseButton(button){
+  switch(button) {
+  case 1://Red
+    btnReset(RED_ID[0], RED_ID[1])
+    break;
+  case 2://Green
+    btnReset(GREEN_ID[0],GREEN_ID[1])
+    break;
+  case 3://Yello
+    btnReset(YELLOW_ID[0], YELLOW_ID[1])
+    break;
+  case 4://Blue
+    btnReset(BLUE_ID[0], BLUE_ID[1])
+    break;
   }
 }
