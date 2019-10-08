@@ -12,23 +12,23 @@ const  YELLOW_ID = "#game_btn_yellow";
 const  BLUE_ID = "#game_btn_blue";
 //Making sure document has loaded
 $(document).ready(function(){
-  $("#game_btn_start").on("click", function(){
+  $("#game_btn_start").mousedown(function(){
     console.log("Start btn clicked");
     timeStamp = Date.now();
     requestAnimationFrame(gameLoop);
   });
 
   //Button click CallBack functions
-  $("#game_btn_red").on("click", function(){
+  $("#game_btn_red").mousedown(function(){
     pressButton(1)
   });
-  $("#game_btn_green").on("click", function(){
+  $("#game_btn_green").mousedown(function(){
     pressButton(2)
   });
-  $("#game_btn_yellow").on("click", function(){
+  $("#game_btn_yellow").mousedown(function(){
     pressButton(3)
   });
-  $("#game_btn_blue").on("click", function(){
+  $("#game_btn_blue").mousedown(function(){
     pressButton(4)
   });
 });
@@ -40,7 +40,7 @@ function btnGlow(btnID){
   console.log("Cicked on "+btnID);
   let lastColor = $(btnID).attr("fill");
   $(btnID).animate({svgFill:"white"}, 100);
-  $(btnID).animate({svgFill:lastColor}, 100);
+  $(btnID).animate({svgFill:lastColor}, 50);
 }
 
 //Main game loop
