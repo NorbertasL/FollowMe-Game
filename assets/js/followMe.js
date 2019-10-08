@@ -3,7 +3,11 @@ let userTurn = false;
 let sequance = [];
 let computerSequance = [];
 
+let stopGameLoop = false;
+
 let timeStamp;
+
+const START_BTN_TXT = ["Start", "Reset"]
 
 //ID's and original colour
 const  RED_ID = ["#game_btn_red", "red"];
@@ -14,8 +18,25 @@ const  BLUE_ID = ["#game_btn_blue", "blue"];
 $(document).ready(function(){
   $("#game_btn_start").mousedown(function(){
     console.log("Start btn clicked");
+    let btn_txt = $("#game_btn_start > text").text();
+
+    //Toggle between btn text
+    $("#game_btn_start > text").text(
+      ()=>(btn_txt == START_BTN_TXT[0] ?  START_BTN_TXT[1] : START_BTN_TXT[0]));
+
     timeStamp = Date.now();
-    requestAnimationFrame(gameLoop);
+
+
+    //Make the button stant and stop(reset too) the game
+    if(btn_txt  == START_BTN_TXT[0]){
+      stopGameLoop = false;
+      requestAnimationFrame(gameLoop);
+    }else{
+      stopGameLoop = true;
+      resetGame();
+    }
+
+
   });
 
   //Button click CallBack functions
@@ -66,6 +87,12 @@ function btnReset(btnID, orginialColour){
 //Main game loop
 function gameLoop(){
   console.log("Game loop called");
+
+  if(stopGameLoop){
+    console.log("Stoping gameLoop");
+    return;
+  }
+
   if(sequance.length == 0){
     for(i=sequance.length; i<gameLvl; i++){
       sequance.push(getRandomBtn());
@@ -88,7 +115,6 @@ function getRandomBtn(){
 
 function resetGame(){
   userTurn = false;
-  needPatter = true;
   sequance = [];
 }
 function playPattern(){
