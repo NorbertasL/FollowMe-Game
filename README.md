@@ -1,6 +1,6 @@
 # **FollowMe! Game Project**
 ## by Norbertas Lapenas
-## [Preview Website](#).
+## [Preview Website](https://norbertasl.github.io/FollowMe-Game/).
 
 *A simple memory game similar to "Simon" written with JavaScript.*
 
