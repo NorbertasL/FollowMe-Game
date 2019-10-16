@@ -14,6 +14,13 @@ const  RED_ID = ["#game_btn_red", "red"];
 const  GREEN_ID = ["#game_btn_green", "green"];
 const  YELLOW_ID = ["#game_btn_yellow", "yellow"];
 const  BLUE_ID = ["#game_btn_blue", "blue"];
+
+//Colour button sounds
+let redSound = new Audio("assets/sounds/Red.flac");
+let greenSound = new Audio("assets/sounds/Green.flac");
+let yellowSound = new Audio("assets/sounds/Yellow.flac");
+let blueSound = new Audio("assets/sounds/Blue.flac");
+
 //Making sure document has loaded
 $(document).ready(function(){
   $("#game_btn_start").mousedown(function(){
@@ -129,7 +136,6 @@ function playPattern(){
 
   //if 1 sec has pased since last timestamp
   if(ts-timeStamp > 1000){
-    //releaseButton("all");
     timeStamp = ts;
     let btn = computerSequance.shift();
     pressButton(btn);
@@ -144,11 +150,6 @@ function playPattern(){
 }
 
 function pressButton(button, userCalling){
-  //Colour button sounds
-  let redSound = new Audio("assets/sounds/Red.flac");
-  let greenSound = new Audio("assets/sounds/Green.flac");
-  let yellowSound = new Audio("assets/sounds/Yellow.flac");
-  let blueSound = new Audio("assets/sounds/Blue.flac");
 
   switch(button) {
   case 1://Red
@@ -156,28 +157,28 @@ function pressButton(button, userCalling){
       //Check on pattern
     }
     redSound.play();
-    btnGlow(RED_ID[0])
+    btnGlow(RED_ID[0]);
     break;
   case 2://Green
     if(userCalling){
       //Check on pattern
     }
     greenSound.play();
-    btnGlow(GREEN_ID[0])
+    btnGlow(GREEN_ID[0]);
     break;
   case 3://Yello
     if(userCalling){
       //Check on pattern
     }
     yellowSound.play();
-    btnGlow(YELLOW_ID[0])
+    btnGlow(YELLOW_ID[0]);
     break;
   case 4://Blue
     if(userCalling){
       //Check on pattern
     }
     blueSound.play();
-    btnGlow(BLUE_ID[0])
+    btnGlow(BLUE_ID[0]);
     break;
   }
 }
@@ -185,16 +186,16 @@ function pressButton(button, userCalling){
 function releaseButton(button){
   switch(button) {
   case 1://Red
-    btnReset(RED_ID[0], RED_ID[1])
+    btnReset(RED_ID[0], RED_ID[1]);
     break;
   case 2://Green
-    btnReset(GREEN_ID[0],GREEN_ID[1])
+    btnReset(GREEN_ID[0],GREEN_ID[1]);
     break;
   case 3://Yello
-    btnReset(YELLOW_ID[0], YELLOW_ID[1])
+    btnReset(YELLOW_ID[0], YELLOW_ID[1]);
     break;
   case 4://Blue
-    btnReset(BLUE_ID[0], BLUE_ID[1])
+    btnReset(BLUE_ID[0], BLUE_ID[1]);
     break;
   }
 }
