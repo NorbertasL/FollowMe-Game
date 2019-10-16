@@ -140,17 +140,25 @@ function playPattern(){
 }
 
 function pressButton(button){
+  let redSound = new Audio("assets/sounds/Red.flac");
+  let greenSound = new Audio("assets/sounds/Green.flac");
+  let yellowSound = new Audio("assets/sounds/Yellow.flac");
+  let blueSound = new Audio("assets/sounds/Blue.flac");
   switch(button) {
   case 1://Red
+    redSound.play();
     btnGlow(RED_ID[0])
     break;
   case 2://Green
+    greenSound.play();
     btnGlow(GREEN_ID[0])
     break;
   case 3://Yello
+    yellowSound.play();
     btnGlow(YELLOW_ID[0])
     break;
   case 4://Blue
+    blueSound.play();
     btnGlow(BLUE_ID[0])
     break;
   }
