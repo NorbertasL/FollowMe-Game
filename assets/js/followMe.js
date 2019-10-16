@@ -41,16 +41,24 @@ $(document).ready(function(){
 
   //Button click CallBack functions
   $("#game_btn_red").mousedown(function(){
-    pressButton(1)
+    if(userTurn){
+      pressButton(1)
+    }
   });
   $("#game_btn_green").mousedown(function(){
-    pressButton(2)
+    if(userTurn){
+      pressButton(2)
+    }
   });
   $("#game_btn_yellow").mousedown(function(){
-    pressButton(3)
+    if(userTurn){
+      pressButton(3)
+    }
   });
   $("#game_btn_blue").mousedown(function(){
-    pressButton(4)
+    if(userTurn){
+      pressButton(4)
+    }
   });
 
   //Release function
