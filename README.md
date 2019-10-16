@@ -10,8 +10,8 @@
 
 * jQuery [Link](https://jquery.com/)
   * Makes JS writing faster and easter to understand
-* jQuery SVG [Link](http://keith-wood.name/svg.html)
-  * jQuery plugin that increase SVG functionality
+* ~~jQuery SVG [Link](http://keith-wood.name/svg.html)~~
+  * ~~jQuery plugin that increase SVG functionality~~
 
 
 ### *Processes of building the game*
@@ -35,8 +35,9 @@
 ---
 #### Issued during development
 * Changing SVG fill.
-  * Turns out jQuerry cannot change SVG fill option with animation method,
-  so I had to import a jQuerry plug in to do so.
+  * ~~Turns out jQuerry cannot change SVG fill option with animation method,
+  so I had to import a jQuerry plug in to do so.~~Using css manipulation for
+   that now.
 * Computer was using the same methods to trigger button presses, but I needed a
 way to time it.
   * A simple if statement with time checking stamp and a callback function solved
