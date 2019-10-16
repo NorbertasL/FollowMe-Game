@@ -1,13 +1,13 @@
+//Game Variables
 let gameLvl = 5;
 let userTurn = false;
 let sequance = [];
-let computerSequance = [];
 
 let stopGameLoop = false;
 
 let timeStamp;
 
-const START_BTN_TXT = ["Start", "Reset"]
+const START_BTN_TXT = ["Start", "Reset"];
 
 //ID's and original colour
 const  RED_ID = ["#game_btn_red", "red"];
@@ -21,11 +21,11 @@ $(document).ready(function(){
     let btn_txt = $("#game_btn_start > text").text();
 
     //Toggle between btn text
+    // TODO: animetae button
     $("#game_btn_start > text").text(
       ()=>(btn_txt == START_BTN_TXT[0] ?  START_BTN_TXT[1] : START_BTN_TXT[0]));
 
     timeStamp = Date.now();
-
 
     //Make the button stant and stop(reset too) the game
     if(btn_txt  == START_BTN_TXT[0]){
@@ -35,44 +35,43 @@ $(document).ready(function(){
       stopGameLoop = true;
       resetGame();
     }
-
-
   });
 
   //Button click CallBack functions
   $("#game_btn_red").mousedown(function(){
     if(userTurn){
-      pressButton(1)
+      pressButton(1);
     }
   });
   $("#game_btn_green").mousedown(function(){
     if(userTurn){
-      pressButton(2)
+      pressButton(2);
     }
   });
   $("#game_btn_yellow").mousedown(function(){
     if(userTurn){
-      pressButton(3)
+      pressButton(3);
     }
   });
   $("#game_btn_blue").mousedown(function(){
     if(userTurn){
-      pressButton(4)
+      pressButton(4);
     }
   });
 
   //Release function
+  //Using mouse leave to prevent the button from being stuck in on state
   $("#game_btn_red").on("mouseup mouseleave", function(){
-    releaseButton(1)
+    releaseButton(1);
   });
   $("#game_btn_green").on("mouseup mouseleave", function(){
-    releaseButton(2)
+    releaseButton(2);
   });
   $("#game_btn_yellow").on("mouseup mouseleave", function(){
-    releaseButton(3)
+    releaseButton(3);
   });
   $("#game_btn_blue").on("mouseup mouseleave", function(){
-    releaseButton(4)
+    releaseButton(4);
   });
 
 });
@@ -82,14 +81,12 @@ $(document).ready(function(){
 function btnGlow(btnID){
   //DEBUG
   console.log("Glow on "+btnID);
-  $(btnID).animate({svgFill:"white"}, 100);
-
+  $(btnID).css({fill:"white"});
 }
-
 function btnReset(btnID, orginialColour){
   //DEBUG
   console.log("Glow off "+btnID);
-  $(btnID).animate({svgFill:orginialColour}, 50);
+  $(btnID).css({fill:orginialColour});
 }
 
 //Main game loop
@@ -109,9 +106,6 @@ function gameLoop(){
   }
   if(!userTurn){
     playPattern();
-  }else{
-    //User turn
-
   }
 
   //Calling iteslef again
@@ -125,6 +119,8 @@ function resetGame(){
   userTurn = false;
   sequance = [];
 }
+
+let computerSequance = [];
 function playPattern(){
   if(computerSequance.length == 0 ){
     computerSequance = sequance.slice();
@@ -147,25 +143,39 @@ function playPattern(){
   }
 }
 
-function pressButton(button){
+function pressButton(button, userCalling){
+  //Colour button sounds
   let redSound = new Audio("assets/sounds/Red.flac");
   let greenSound = new Audio("assets/sounds/Green.flac");
   let yellowSound = new Audio("assets/sounds/Yellow.flac");
   let blueSound = new Audio("assets/sounds/Blue.flac");
+
   switch(button) {
   case 1://Red
+    if(userCalling){
+      //Check on pattern
+    }
     redSound.play();
     btnGlow(RED_ID[0])
     break;
   case 2://Green
+    if(userCalling){
+      //Check on pattern
+    }
     greenSound.play();
     btnGlow(GREEN_ID[0])
     break;
   case 3://Yello
+    if(userCalling){
+      //Check on pattern
+    }
     yellowSound.play();
     btnGlow(YELLOW_ID[0])
     break;
   case 4://Blue
+    if(userCalling){
+      //Check on pattern
+    }
     blueSound.play();
     btnGlow(BLUE_ID[0])
     break;
