@@ -3,6 +3,21 @@ export default class Console {
     this.gameWidth = canvasWidth;
     this.gameHeight = canvasHeight;
     this.radius = this.gameHeight/2 - 20;
+    this.menuRadius = this.radius/2;
+
+    //Loading btn images
+    this.mainBtn = {
+      start_normal:new Image(),
+      start_pressed:new Image(),
+      restart_normal:new Image(),
+      restart_pressed:new Image()
+    }
+    this.mainBtn.start_normal.src = "assets/js/FollowMeGame/img/start_btn.png";
+    this.mainBtn.start_pressed.src = "assets/js/FollowMeGame/img/start_btn_pressed.png";
+    this.mainBtn.restart_normal.src = "assets/js/FollowMeGame/img/restart_btb.png";
+    this.mainBtn.restart_pressed.src = "assets/js/FollowMeGame/img/restart_btn_pressed.png";
+
+
 
   }
 
@@ -55,14 +70,23 @@ export default class Console {
     ctx.closePath();
     ctx.fill();
 
-    //Inner Console
+    //Inner(manu) Console
     ctx.beginPath();
-    ctx.arc(this.gameWidth/2, this.gameHeight/2, this.radius-110, 0, 2 * Math.PI);
+    ctx.arc(this.gameWidth/2, this.gameHeight/2, this.menuRadius, 0, 2 * Math.PI);
     ctx.fillStyle = 'black';
     ctx.closePath();
     ctx.fill();
 
+    //Manu buttons
+    let mainBtn = this.mainBtn.start_normal;
+    ctx.drawImage(mainBtn, 0, 0, 100, 40);
 
+
+
+
+  }
+
+  update(dt){
 
   }
 
