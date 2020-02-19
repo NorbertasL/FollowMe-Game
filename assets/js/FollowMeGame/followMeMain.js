@@ -1,4 +1,5 @@
 import Console from "/assets/js/FollowMeGame/console.js"
+import Input from "/assets/js/FollowMeGame/input.js"
 
 let canvas = document.getElementById("gameCanvas");
 let ctx = canvas.getContext("2d");
@@ -19,6 +20,7 @@ canvas.height = CANVAS_SIZE * scale;
 
 
 let gameConsole = new Console(canvas.width, canvas.height);
+let input = new Input(canvas)
 
 let lastTime = 0;
 function gameLoop(timeStamp){
@@ -27,6 +29,9 @@ function gameLoop(timeStamp){
 
   gameConsole.update(dt);
   gameConsole.draw(ctx);
+
+
+
 
   requestAnimationFrame(gameLoop);
 }

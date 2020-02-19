@@ -3,7 +3,6 @@ export default class Console {
     this.gameWidth = canvasWidth;
     this.gameHeight = canvasHeight;
     this.radius = this.gameHeight/2 - 20;
-    this.menuRadius = this.radius/2;
 
     //Loading btn images
     this.mainBtn = {
@@ -16,6 +15,9 @@ export default class Console {
     this.mainBtn.start_pressed.src = "assets/js/FollowMeGame/img/start_btn_pressed.png";
     this.mainBtn.restart_normal.src = "assets/js/FollowMeGame/img/restart_btb.png";
     this.mainBtn.restart_pressed.src = "assets/js/FollowMeGame/img/restart_btn_pressed.png";
+
+    //Innitialising btn states
+    this.mainBtn = this.mainBtn.start_normal;
 
 
 
@@ -71,15 +73,19 @@ export default class Console {
     ctx.fill();
 
     //Inner(manu) Console
+    let mainConsolePos = {
+      x:this.gameWidth/2,
+      y:this.gameHeight/2,
+      radius: this.radius/2
+    }
     ctx.beginPath();
-    ctx.arc(this.gameWidth/2, this.gameHeight/2, this.menuRadius, 0, 2 * Math.PI);
+    ctx.arc(mainConsolePos.x, mainConsolePos.y, mainConsolePos.radius, 0, 2 * Math.PI);
     ctx.fillStyle = 'black';
     ctx.closePath();
     ctx.fill();
 
     //Manu buttons
-    let mainBtn = this.mainBtn.start_normal;
-    ctx.drawImage(mainBtn, 0, 0, 100, 40);
+    ctx.drawImage(this.mainBtn, mainConsolePos.x-50, mainConsolePos.y+50, 100, 40);
 
 
 
